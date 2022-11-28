@@ -1,17 +1,29 @@
-# notes
+# Tasks
 
-Start modelling
+## Cherry picker model v0.1
 
-- Cherry picker model
-  - fake data
-  - Sample 24 from data
-  - Run cp
-  - Give one node
+- [x] read from fake data file
+- [x] minimal node selecting process
+- [x] radcad structure
+- [x] basic visual
 
-cadCAD definitions:
+## Cherry picker model v0.5
 
-- Params + Initial value
-- Calculation on param
-- Change of param
-- update blocks (Combo of those calcs and changes)
-- Metrics/ post processing
+- [ ] read real rawServiceLog file
+- [ ] most of ranking algo
+- [ ] full params and states
+- [ ] post processing of simulation
+
+## Cherry picker model v1
+
+- [ ] real time data and storage
+- [ ] param sweeps
+- [ ] A/B sim from params
+- [ ] pokt token denomination
+
+### Beyond
+
+- Agent based model for nodes
+- dapp agent
+- inflation and profits
+- TBD
