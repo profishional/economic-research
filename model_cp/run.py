@@ -1,7 +1,7 @@
 from radcad import Model, Simulation, Experiment
 from radcad.engine import Engine, Backend
 from state_update_blocks import *
-from states import *
+from states_and_params import *
 
 from parts.utils import *
 
