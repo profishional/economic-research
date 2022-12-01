@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 
+"""
+    The Cherry Picker (CP) calculation process for the CP agent.
+"""
+
 # relative path of where all the data should be
 PATH = '../../data/'
 

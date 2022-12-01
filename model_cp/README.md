@@ -10,7 +10,7 @@
 ## Cherry picker model v0.5
 
 - [ ] read real rawServiceLog file
-- [ ] most of ranking algo
+- [x] most of ranking algo
 - [ ] full params and states
 - [ ] post processing of simulation
 
