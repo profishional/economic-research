@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-PATH = '/Users/df/other/pocket_files/pokt_tokenomics/data/'
-
+# relative path of where all the data should be
+PATH = '../../data/'
 
 def unsortedList(filename="rawServiceLog.csv") -> pd.DataFrame:
     # id, attempts, successStatuses, averageSuccessLatency
