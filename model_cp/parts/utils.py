@@ -3,57 +3,64 @@ import numpy as np
 
 PATH = '/Users/df/other/pocket_files/pokt_tokenomics/data/'
 
-# TODO get data from pypokt??
-def unsortedList():
+
+def unsortedList(filename="rawServiceLog.csv") -> pd.DataFrame:
     # id, attempts, successStatuses, averageSuccessLatency
-    df = pd.read_csv(PATH + 'rawServiceLog.csv')
+    df = pd.read_csv(PATH + filename)
     df['successRate'] = np.round(df['successStatus']/ df['attempts'],5)
 
     return df
 
-# TODO sort by higher success rate, then lowest latency
-def sortItems(itemsList):
-    # key = success rate
-    df = itemsList.sort_values(by=['successRate'])
 
-    # tie breaker = avg success
-    # df = itemsList.sort_values(by=['successRate', 'avarageSuccessLatency'])
+def sortItems(itemsList: pd.DataFrame) -> pd.DataFrame:
+    # sort by success rate and tie break with ASL
+    df = itemsList.sort_values(by=['successRate', 'averageSuccessLatency'])
 
     return df
 
 
-# TODO weighted rank
-def rankItems(itemsList, Fw):
+def rankItems(itemsList: pd.DataFrame, weightFactor: int, maxFailurePerPeriod: int) -> list:
+    # TODO time consideration
     # 15 failures per 15 minutes allowed on apps (all 5 nodes failed 3 times)??
     # 3 failures per hour
-    # >95% - 10
-    itemsList['rank'] = np.where(itemsList['successRate'] > .95, Fw, 1)
 
-    # >85% - 8
-    # >0% - 5 or 1
-    # else 1
-    # remove if fail > 3
-
-    return itemsList
-
-
-def get_node(weightFactor=10):
-    unsorted_data = unsortedList()
-    sortedList = sortItems(itemsList=unsorted_data)
-    ranked = rankItems(itemsList=sortedList, Fw=weightFactor)
-
-    # create a raffle based on the weighting they got
     raffle = []
-    for ind, node in ranked.iterrows():
-        raffle.extend([node.id] * int(node['rank']))
+
+    for ind, item in itemsList.iterrows():
+        if item.successRate > 0.95:
+            raffle.extend([ind] * weightFactor)
+            weightFactor -= 2
+
+        elif item.successRate > 0.85:
+            raffle.extend([ind] * weightFactor)
+            weightFactor = weightFactor - 3 if weightFactor <= 0 else 1
+
+        elif item.successRate > 0:
+            raffle.extend([ind])
+
+        elif item.successRate == 0:
+            if item.attempts < maxFailurePerPeriod:
+                raffle.extend([ind])
+
+    return raffle
+
+
+def get_node(weightFactor=10, maxFailurePerPeriod=3) -> pd.DataFrame:
+    unsorted_data = unsortedList(filename="rawServiceLog.csv")
+    sortedList = sortItems(itemsList=unsorted_data)
+    rankedList = rankItems(
+        itemsList=sortedList,
+        weightFactor=weightFactor,
+        maxFailurePerPeriod=maxFailurePerPeriod
+        )
 
     # random pick of the list
-    ind = np.floor(np.random.rand() * len(raffle))
-    node_id = raffle[int(ind)]
+    ind = np.floor(np.random.rand() * len(rankedList))
+    node_id = rankedList[int(ind)]
 
-    return ranked.loc[ranked.id == node_id]
+    return sortedList.loc[sortedList.id == node_id]
 
 
 if __name__ == "__main__":
     res = get_node()
-    print(int(res.id))
+    print(res)
