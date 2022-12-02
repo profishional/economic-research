@@ -9,13 +9,14 @@
 
 ## Cherry picker model v0.5 - internal
 
-- [ ] read real rawServiceLog file
-- [ ] update the cherrypicker algo
-- [ ] full params and states
+- [?] read real rawServiceLog file
+- [x] update the cherrypicker algo
+- [x] full params and states
 - [ ] post processing of simulation
 
 ## Cherry picker model v1 - int + external
 
+- [ ] failure and error log for algo
 - [ ] make cherry picker object
 - [ ] real time data and storage
 - [ ] param sweeps

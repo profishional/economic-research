@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 """
     The Cherry Picker (CP) calculation process for the CP agent.
@@ -9,7 +10,7 @@ import numpy as np
 # TODO logs; service, failure, error
 
 # relative path of where all the data should be
-PATH = '../../data/'
+PATH = str(Path().parent.resolve().parent.resolve()) + '/data/'
 TIMEOUT_LIMIT = 20
 TIMEOUT_VARIANCE = 2
 
@@ -89,8 +90,6 @@ def get_node(weight_factor=10, expected_latency=0.15, weight_multiplier=35) -> p
         weight_multiplier=weight_multiplier,
         max_fail_per_period=max_failure_period
         )
-
-    print(rankedList)
 
     # random pick of the list
     ind = np.floor(np.random.rand() * len(rankedList))
