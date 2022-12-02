@@ -5,7 +5,8 @@ initial_state = {
 
 sys_params = {
     'weightFactor':[10],
-    'maxFailurePerPeriod':[3],
     'sessionNodeCount':[24],
+    'expectedSuccessLatency': [0.15],
+    'weightMultiplier' : [35]
 }
 

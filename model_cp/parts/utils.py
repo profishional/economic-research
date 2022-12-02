@@ -3,59 +3,91 @@ import numpy as np
 
 """
     The Cherry Picker (CP) calculation process for the CP agent.
+    Based on the Portal-API CP.
 """
+
+# TODO logs; service, failure, error
 
 # relative path of where all the data should be
 PATH = '../../data/'
+TIMEOUT_LIMIT = 20
+TIMEOUT_VARIANCE = 2
 
 def unsortedList(filename="rawServiceLog.csv") -> pd.DataFrame:
-    # id, attempts, successStatuses, averageSuccessLatency
+    # reads: id, attempts, successStatuses, medianSuccessLatency, weightedSuccessLatency, failure
+    # TODO record failure, erase if successful
+
     df = pd.read_csv(PATH + filename)
+
     df['successRate'] = np.round(df['successStatus']/ df['attempts'],5)
+    df['medianSuccessLatency'] = np.round(df['medianSuccessLatency'],5)
+    df['weightedSuccessLatency'] = np.round(df['weightedSuccessLatency'],5)
 
     return df
 
 
 def sortItems(itemsList: pd.DataFrame) -> pd.DataFrame:
-    # sort by success rate and tie break with ASL
-    df = itemsList.sort_values(by=['successRate', 'averageSuccessLatency'])
+    # sort on the precalculated number of weighted success
+    df = itemsList.sort_values(by=['weightedSuccessLatency'])
 
     return df
 
 
-def rankItems(itemsList: pd.DataFrame, weightFactor: int, maxFailurePerPeriod: int) -> list:
-    # TODO time consideration
-    # 15 failures per 15 minutes allowed on apps (all 5 nodes failed 3 times)??
-    # 3 failures per hour
+def rankItems(itemsList: pd.DataFrame, weight_factor: int,
+    expected_latency: float, max_fail_per_period: int,
+    weight_multiplier=35) -> list:
 
+    previousNodeLatency = 0
     raffle = []
 
     for ind, item in itemsList.iterrows():
+        latencyDifference = 0
+        benchmark = previousNodeLatency
+
+        if 0 < previousNodeLatency and expected_latency < item.medianSuccessLatency:
+            # 0 < prev lat < expected < median lat
+            # prev < median -> reset benchmark
+            if previousNodeLatency < expected_latency:
+                benchmark = expected_latency
+
+            # expected lat < median -> weighted - prev
+            latencyDifference = item.weightedSuccessLatency - benchmark
+
+        if latencyDifference:
+            weightFactor -= np.round(latencyDifference * weight_multiplier)
+
+            if (weight_factor <= 0):
+                weight_factor = 0 if item.attempts >= max_fail_per_period else 1
+
+
+        # TODO add failure conditions
         if item.successRate > 0.95:
             raffle.extend([ind] * weightFactor)
-            weightFactor -= 2
-
-        elif item.successRate > 0.85:
-            raffle.extend([ind] * weightFactor)
-            weightFactor = weightFactor - 3 if weightFactor <= 0 else 1
-
         elif item.successRate > 0:
             raffle.extend([ind])
-
-        elif item.successRate == 0:
-            if item.attempts < maxFailurePerPeriod:
+        else:
+            if item.attempts < max_fail_per_period:
                 raffle.extend([ind])
+            else:
+                # TODO set failure in log
+                pass
+
+        previousNodeLatency = item.weightedSuccessLatency
 
     return raffle
 
 
-def get_node(weightFactor=10, maxFailurePerPeriod=3) -> pd.DataFrame:
+def get_node(weight_factor=10, expected_latency=0.15, weight_multiplier=35) -> pd.DataFrame:
+    max_failure_period = 3
+
     unsorted_data = unsortedList(filename="rawServiceLog.csv")
     sortedList = sortItems(itemsList=unsorted_data)
     rankedList = rankItems(
         itemsList=sortedList,
-        weightFactor=weightFactor,
-        maxFailurePerPeriod=maxFailurePerPeriod
+        weightFactor=weight_factor,
+        expected_latency=expected_latency,
+        weight_multiplier=weight_multiplier,
+        max_fail_per_period=max_failure_period
         )
 
     # random pick of the list

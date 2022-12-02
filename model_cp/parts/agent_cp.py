@@ -3,8 +3,9 @@ from .utils import *
 # policies/ calculations
 def policyCherryPicker(params, substep, state_history, prev_state, **kwargs):
     picked_node = get_node(
-        weightFactor=params['weightFactor'],
-        maxFailurePerPeriod=params['maxFailurePerPeriod']
+        weight_factor=params['weightFactor'],
+        expected_latency=params['expectedLatency'],
+        weight_multiplier=params['weightMultiplier']
         )
     node_id = int(picked_node.id)
     return {"new_node_id" : node_id}

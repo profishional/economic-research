@@ -1,6 +1,6 @@
-id,attempts,successStatus,averageSuccessLatency
-1,100,99,.89
-2,134,95,.44
-3,134,94,.44
-4,112,97,.55
-5,123,77,.63
+id,attempts,successStatus,medianSuccessLatency, weightedSuccessLatency
+1,100,99,0.89,0.62
+2,134,95,0.44,0.63
+3,134,94,0.44,0.71
+4,112,97,0.55,0.53
+5,123,77,0.63,0.69
