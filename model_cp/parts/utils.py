@@ -3,7 +3,7 @@ import numpy as np
 
 """
     The Cherry Picker (CP) calculation process for the CP agent.
-    Based on the Portal-API CP.
+    Based on the Portal-API CP in pokt-foundation github.
 """
 
 # TODO logs; service, failure, error
@@ -54,7 +54,7 @@ def rankItems(itemsList: pd.DataFrame, weight_factor: int,
             latencyDifference = item.weightedSuccessLatency - benchmark
 
         if latencyDifference:
-            weightFactor -= np.round(latencyDifference * weight_multiplier)
+            weight_factor -= np.round(latencyDifference * weight_multiplier)
 
             if (weight_factor <= 0):
                 weight_factor = 0 if item.attempts >= max_fail_per_period else 1
@@ -62,12 +62,12 @@ def rankItems(itemsList: pd.DataFrame, weight_factor: int,
 
         # TODO add failure conditions
         if item.successRate > 0.95:
-            raffle.extend([ind] * weightFactor)
+            raffle.extend([ind] * int(weight_factor))
         elif item.successRate > 0:
-            raffle.extend([ind])
+            raffle.append(ind)
         else:
             if item.attempts < max_fail_per_period:
-                raffle.extend([ind])
+                raffle.append(ind)
             else:
                 # TODO set failure in log
                 pass
@@ -84,17 +84,19 @@ def get_node(weight_factor=10, expected_latency=0.15, weight_multiplier=35) -> p
     sortedList = sortItems(itemsList=unsorted_data)
     rankedList = rankItems(
         itemsList=sortedList,
-        weightFactor=weight_factor,
+        weight_factor=weight_factor,
         expected_latency=expected_latency,
         weight_multiplier=weight_multiplier,
         max_fail_per_period=max_failure_period
         )
 
+    print(rankedList)
+
     # random pick of the list
     ind = np.floor(np.random.rand() * len(rankedList))
-    node_id = rankedList[int(ind)]
+    node_ind = rankedList[int(ind)]
 
-    return sortedList.loc[sortedList.id == node_id]
+    return sortedList.loc[node_ind]
 
 
 if __name__ == "__main__":
