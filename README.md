@@ -6,7 +6,7 @@
 
 # Pocket Economic Research
 
-A repository for collaborating on modelling of different elements of the Pocket Network Ecosystem.
+A repository for collaborating on modelling of different elements in the Pocket Network Ecosystem. We will be able to cover the ecosystem more effectively with by compounding our work on the same framework. Also, this repository makes is easier track previous works and outcomes.
 
 <div>
   <a  href="https://godoc.org/github.com/pokt-foundation/economic-research"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"/></a>
@@ -27,15 +27,13 @@ A repository for collaborating on modelling of different elements of the Pocket 
     <a href="https://github.com/pokt-foundation/economic-research/issues"><img src="https://img.shields.io/github/issues-closed/pokt-foundation/economic-research.svg"/></a>
 </div>
 
-Using tools such as cadCAD or its various forms, this aims to create an overview of the behaviors and interactions of the network components.
+This repository uses the [cadCAD](https://github.com/cadCAD-org/cadCAD) framework which is a python library. Most of the models will be using the [radCAD](https://github.com/CADLabs/radCAD) fork until the release of cadCAD1.0 which is under development [here](https://github.com/cadCAD-org/cadCAD-ri). radCAD is had more features, especially for scalability, and it is also compatible with cadCAD.
 
 ## Getting Started
 
-You can use the Python Notebooks to run the models. Also refer to radCAD for running test, benchmark, clusters, etc.
+Visit [radCAD](https://github.com/CADLabs/radCAD) for more information.
 
 ### Installation
-
-Some steps to start running the simulations.
 
 Install all the requirements.
 
@@ -45,11 +43,7 @@ pip install requirements.txt
 
 ## Documentation
 
-For more information on the simulation libraries by BlockScience and community members refer to:
-
-Base repo github.com/cadCAD-org/cadCAD
-
-Fork repo github.com/CADLabs/radCAD
+System models, causal loops, road map - coming soon!
 
 ## Contributing
 
