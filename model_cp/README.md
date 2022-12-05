@@ -9,8 +9,8 @@
 
 ## Cherry picker model v0.5 - internal
 
-- [?] read real rawServiceLog file
-- [x] update the cherrypicker algo
+- [ ] read real rawServiceLog file (required??)
+- [x] update the cherry picker algo
 - [x] full params and states
 - [ ] post processing of simulation
 
@@ -18,10 +18,9 @@
 
 - [ ] failure and error log for algo
 - [ ] make cherry picker object
-- [ ] real time data and storage
+- [ ] real time data
 - [ ] param sweeps
 - [ ] A/B sim from params
-- [ ] pokt token denomination
 
 ### Beyond
 
