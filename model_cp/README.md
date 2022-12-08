@@ -9,21 +9,22 @@
 
 ## Cherry picker model v0.5 - internal
 
-- [ ] read real rawServiceLog file (required??)
+- [ ] read real rawServiceLog, failure, error (required??)
 - [x] update the cherry picker algo
 - [x] full params and states
 - [ ] post processing of simulation
 
 ## Cherry picker model v1 - int + external
 
-- [ ] failure and error log for algo
 - [ ] make cherry picker object
-- [ ] real time data
+- [ ] monte carlo for data files
 - [ ] param sweeps
 - [ ] A/B sim from params
 
 ### Beyond
 
 - USD denomination
-- plug in different ranking algos
-- TBD
+- **interactive webapp**
+  - streamlit
+  - Dash (plotly)
+- real time data??
