@@ -13,7 +13,8 @@ import os
 # relative path of where all the data should be
 # PATH = str(Path().parent.resolve().parent.resolve()) + '/data/'
 # PATH = '../../data/'
-PATH = os.path.dirname(__file__)
+# PATH = os.path.dirname(__file__)
+PATH = 'model_cp/data/'
 
 TIMEOUT_LIMIT = 20
 TIMEOUT_VARIANCE = 2
