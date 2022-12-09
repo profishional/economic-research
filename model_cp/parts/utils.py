@@ -10,7 +10,8 @@ from pathlib import Path
 # TODO logs; service, failure, error
 
 # relative path of where all the data should be
-PATH = str(Path().parent.resolve().parent.resolve()) + '/data/'
+# PATH = str(Path().parent.resolve().parent.resolve()) + '/data/'
+PATH = '../../data/'
 TIMEOUT_LIMIT = 20
 TIMEOUT_VARIANCE = 2
 
