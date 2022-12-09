@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
+import os
 
 """
     The Cherry Picker (CP) calculation process for the CP agent.
@@ -11,7 +12,9 @@ from pathlib import Path
 
 # relative path of where all the data should be
 # PATH = str(Path().parent.resolve().parent.resolve()) + '/data/'
-PATH = '../../data/'
+# PATH = '../../data/'
+PATH = os.path.dirname(__file__)
+
 TIMEOUT_LIMIT = 20
 TIMEOUT_VARIANCE = 2
 
