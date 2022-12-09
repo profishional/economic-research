@@ -5,9 +5,6 @@ from states_and_params import *
 
 from parts.utils import *
 
-import matplotlib.pyplot as plt
-import streamlit as st
-
 def run():
 
     TIMESTEPS = 1000
@@ -32,12 +29,3 @@ def run():
     result = experiment.run()
 
     return result
-
-if __name__ == "__main__":
-    df = pd.DataFrame(run())
-
-    node_count = len(df.selected_node.unique()) - 1
-    fig, ax = plt.subplots()
-    ax.hist(df.selected_node, bins=node_count, range=[1,6])
-
-    st.pyplot(fig)

@@ -21,10 +21,13 @@
 - [ ] param sweeps
 - [ ] A/B sim from params
 
+## Cherry picker App V1.5 - general users
+
+- [ ] streamlit App
+
 ### Beyond
 
 - USD denomination
 - **interactive webapp**
-  - streamlit
-  - Dash (plotly)
+  - consider Dash (plotly) as it was recommended in the
 - real time data??
