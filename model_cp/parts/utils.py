@@ -14,7 +14,7 @@ import os
 # PATH = str(Path().parent.resolve().parent.resolve()) + '/data/'
 # PATH = '../../data/'
 # PATH = os.path.dirname(__file__)
-PATH = 'economic-research/data/'
+PATH = '/app/economic-research/data/'
 
 TIMEOUT_LIMIT = 20
 TIMEOUT_VARIANCE = 2
