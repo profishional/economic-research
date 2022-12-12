@@ -2,10 +2,27 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 from run import *
+from states_and_params import *
 
 
 if __name__ == "__main__":
-    # TODO link this to state and params
+
+    # Add a slider to the sidebar:
+    weight_factor = st.sidebar.slider(
+        'Weight Factor', 0, 10, 10
+    )
+
+    expected_success_latency = st.sidebar.slider(
+        'Expected Latency', 0.0, 1.0, 0.15
+    )
+
+    weight_multiplier = st.sidebar.slider(
+        'Weight Multiplier', 0, 100, 35
+    )
+
+    sys_params['WeightFactor'] = weight_factor
+    sys_params['expectedSuccessLatency'] = expected_success_latency
+    sys_params['WeightMultiplier'] = weight_multiplier
 
     df = pd.DataFrame(run())
 
@@ -16,15 +33,3 @@ if __name__ == "__main__":
     ax.hist(df.selected_node, bins=node_count, range=[1,6])
 
     st.pyplot(fig)
-
-    # slider input
-    # x = st.slider('x')
-    # st.write(x, 'test', x*x)
-
-
-    # # Add a slider to the sidebar:
-    # add_slider = st.sidebar.slider(
-    #     'Select a range of values',
-    #     0, 100
-    # )
-
