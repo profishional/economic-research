@@ -19,7 +19,7 @@ Features:
 - [x] update the cherry picker algo
 - [x] full params and states
 - [ ] post processing of simulation
-- [x] deploy on streamlit app (on profish fork)
+- [x] deploy on streamlit app (on profish fork as prototype)
 
 ## Cherry picker model v1 - int + external
 
@@ -37,5 +37,5 @@ Features:
 
 - USD denomination
 - **interactive webapp**
-  - consider Dash (plotly) as it was recommended in the
+  - consider Dash (plotly) as it was recommended in the eth econ
 - real time data??
