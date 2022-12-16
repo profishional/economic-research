@@ -6,50 +6,88 @@
 
 # Pocket Economic Research
 
-A repository for collaborating on modelling of different elements in the Pocket Network Ecosystem. We will be able to cover the ecosystem more effectively with by compounding our work on the same framework. Also, this repository makes is easier track previous works and outcomes.
+A repository for collaboration on Pocket Network modelling. Based on the open-source Python library [radCAD](https://github.com/CADLabs/radCAD), an extension to [cadCAD](https://cadcad.org). Also, inspired by the [Ethereum Economic Model](https://github.com/CADLabs/ethereum-economic-model/) for repo structuring and documentation.
 
-<div>
-  <a  href="https://godoc.org/github.com/pokt-foundation/economic-research"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"/></a>
-  <a  href="https://goreportcard.com/report/github.com/pokt-foundation/economic-research"><img src="https://goreportcard.com/badge/github.com/pokt-foundation/economic-research"/></a>
-  <a href="https://golang.org"><img  src="https://img.shields.io/badge/golang-v1.11-red.svg"/></a>
-  <a  href="https://github.com/tools/godep" ><img src="https://img.shields.io/badge/godep-dependency-71a3d9.svg"/></a>
-</div>
+We will aim to migrate to cadCAD1.0 in the future once it becomes readily used by the community.
 
-## Overview
+## Table of Contents
 
-<div>
-    <a  href="https://github.com/pokt-foundation/economic-research/releases"><img src="https://img.shields.io/github/release-pre/pokt-foundation/economic-research.svg"/></a>
-    <a  href="https://github.com/pokt-foundation/economic-research/pulse"><img src="https://img.shields.io/github/contributors/pokt-foundation/economic-research.svg"/></a>
-    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"/></a>
-    <a href="https://github.com/pokt-foundation/economic-research/pulse"><img src="https://img.shields.io/github/last-commit/pokt-foundation/economic-research.svg"/></a>
-    <a href="https://github.com/pokt-foundation/economic-research/pulls"><img src="https://img.shields.io/github/issues-pr/pokt-foundation/economic-research.svg"/></a>
-    <a href="https://github.com/pokt-foundation/economic-research/releases"><img src="https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-pink.svg"/></a>
-    <a href="https://github.com/pokt-foundation/economic-research/issues"><img src="https://img.shields.io/github/issues-closed/pokt-foundation/economic-research.svg"/></a>
-</div>
+* [Introduction](#Introduction)
+  * [Model Features](#Model-Features)
+  * [Directory Structure](#Directory-Structure)
+  * [Model Architecture](#Model-Architecture)
+  * [Model Assumptions](#Model-Assumptions)
+* [Getting Started](#Getting-Started)
+* [Simluation Experiments](#Simlulation-Experiments)
+* [Web App](#Web-App)
+* [Contributions](#Contributions)
+* [Contacts](#Support-and-Contact)
+* [License](#License)
 
-This repository uses the [cadCAD](https://github.com/cadCAD-org/cadCAD) framework which is a python library. Most of the models will be using the [radCAD](https://github.com/CADLabs/radCAD) fork until the release of cadCAD1.0 which is under development [here](https://github.com/cadCAD-org/cadCAD-ri). radCAD is had more features, especially for scalability, and it is also compatible with cadCAD.
+---
+
+## Introduction
+
+We are creating an open source model to describe the Pocket Network ecosystem. The model is a work in progress but aims to capture App session behavior, which translates to node rewards and network state.
+
+### Model Features
+
+* Modular structure for experimentation. Different users of the model can experiment with their agent type.
+* Interactive Web Application for user access.
+
+### Directory structure
+
+* [data/](data/): Datasets used in the creation of the models.
+* [docs/](docs/): Various documentation to support the usage of the model from systems level understanding to code level documentation.
+* [experiments/](experiments/): Analysis and experiment creation.
+* [model/](model/): Base models of the repository
+* [app/](app/): interactive web apps for ease of use
+
+### Model Architecture
+
+The [Model](model/) contains the cadCAD modules for agent styles descriptions and configuration files for the simulations.
+
+| Module | Description |
+| --- | --- |
+| WIP | WIP |
+
+### Model Assumptions
+
+We aim to create relevant models for the real world network but any assumption made for implementation will be described in the [Assumptions](ASSUMPTIONS.md) markdown.
 
 ## Getting Started
 
-Visit [radCAD](https://github.com/CADLabs/radCAD) for more information.
+For now we will be using local environments using Python3 and Visual Studio Code (with Jupyter extension).
 
-### Installation
+**First**, set up a Python 3 [virtualenv](https://docs.python.org/3/library/venv.html) development environment using of Pythons [Virtual Environments Wrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html):
 
-Install all the requirements.
-
+```bash
+mkvirtualenv radCAD
+workon radCAD
 ```
-pip install requirements.txt
+
+**Once you have _activated_ the virtual environment**, install the Python 3 dependencies using [Pip](https://packaging.python.org/tutorials/installing-packages/), from the [requirements.txt](requirements.txt) file in the root directory, within your new virtual environment:
+
+```bash
+# Install Python 3 dependencies inside virtual environment
+pip install -r requirements.txt
 ```
 
-## Documentation
+In your [Visual Studio Code](https://code.visualstudio.com/) window you can interact with Jupyter Notebooks through the `.ipynb` file extensions after you have installed Jupyter extension (should prompt automatically). There you can choose your virtual environment (cadCAD) that was created earlier.
 
-System models, causal loops, road map - coming soon!
+## Simulations Experiments
+
+The [experiments/](experiments/) directory will be populated with example analyses and instructions for setting up news experiments. The new experiments can be modifications of the current state or possibly a new one. But we aim to provide simple parameter modifications as a web app.
+
+## Web App
+
+Starting with [Streamlit](https://www.streamlit.io) we provide simple simulations that can take varying inputs. In the future, we may migrate to [Dash Plotly](https://plotly.com/dash/) for more advanced applications if needed.
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://github.com/pokt-network/repo-template/blob/master/CONTRIBUTING.md) for details on contributions and the process of submitting pull requests.
 
-## Support & Contact
+## Support and Contact
 
 <div>
   <a  href="https://twitter.com/poktnetwork" ><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
