@@ -8,7 +8,7 @@
 
 A repository for collaboration on Pocket Network modelling. Based on the open-source Python library [radCAD](https://github.com/CADLabs/radCAD), an extension to [cadCAD](https://cadcad.org). Also, inspired by the [Ethereum Economic Model](https://github.com/CADLabs/ethereum-economic-model/) for repo structuring and documentation.
 
-We will aim to migrate to cadCAD1.0 in the future once it becomes readily used by the community.
+This is a starting point for the project which is very similar to the Ethereum repo. We will make changes as need, including migrating to cadCAD1.0 once it is ready.
 
 ## Table of Contents
 
@@ -18,10 +18,10 @@ We will aim to migrate to cadCAD1.0 in the future once it becomes readily used b
   * [Model Architecture](#Model-Architecture)
   * [Model Assumptions](#Model-Assumptions)
 * [Getting Started](#Getting-Started)
-* [Simluation Experiments](#Simlulation-Experiments)
+* [Simulations Experiments](#Simulations-Experiments)
 * [Web App](#Web-App)
-* [Contributions](#Contributions)
-* [Contacts](#Support-and-Contact)
+* [Contributing](#Contributing)
+* [Support and Contact](#Support-and-Contact)
 * [License](#License)
 
 ---
@@ -86,6 +86,29 @@ Starting with [Streamlit](https://www.streamlit.io) we provide simple simulation
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://github.com/pokt-network/repo-template/blob/master/CONTRIBUTING.md) for details on contributions and the process of submitting pull requests.
+
+---
+<table>
+  <tr>
+    <td align="center">
+      <a href="/"><img src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" width="100px;" alt=""/>
+      <br />
+        <sub>
+      <b>Your profile would look awesome here!</b>
+      </sub>
+      </a>
+      <br />
+      <a href="https://github.com/CADLabs/ethereum-economic-model/commits?author=barnabemonnot" title="Code">💻</a>
+      <a href="#ideas-barnabemonnot" title="Ideas, Planning, & Feedback">🤔</a>
+      <a href="#infra-BenSchZA" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a>
+      <a href="https://github.com/CADLabs/ethereum-economic-model/pulls?q=is%3Apr+reviewed-by%3AAntoineRondelet" title="Reviewed Pull Requests">👀</a>
+      <a href="https://github.com/CADLabs/ethereum-economic-model/commits?author=BenSchZA" title="Documentation">📖</a>
+      <a href="https://github.com/CADLabs/ethereum-economic-model/issues?q=author%3ABenSchZA" title="Bug reports">🐛</a>
+    </td>
+  </tr>
+</table>
+
+---
 
 ## Support and Contact
 
