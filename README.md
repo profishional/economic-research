@@ -88,26 +88,7 @@ Starting with [Streamlit](https://www.streamlit.io) we provide simple simulation
 Please read [CONTRIBUTING.md](https://github.com/pokt-network/repo-template/blob/master/CONTRIBUTING.md) for details on contributions and the process of submitting pull requests.
 
 ---
-<table>
-  <tr>
-    <td align="center">
-      <a href="/"><img src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" width="100px;" alt=""/>
-      <br />
-        <sub>
-      <b>Your profile would look awesome here!</b>
-      </sub>
-      </a>
-      <br />
-      <a href="https://github.com/CADLabs/ethereum-economic-model/commits?author=barnabemonnot" title="Code">💻</a>
-      <a href="#ideas-barnabemonnot" title="Ideas, Planning, & Feedback">🤔</a>
-      <a href="#infra-BenSchZA" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a>
-      <a href="https://github.com/CADLabs/ethereum-economic-model/pulls?q=is%3Apr+reviewed-by%3AAntoineRondelet" title="Reviewed Pull Requests">👀</a>
-      <a href="https://github.com/CADLabs/ethereum-economic-model/commits?author=BenSchZA" title="Documentation">📖</a>
-      <a href="https://github.com/CADLabs/ethereum-economic-model/issues?q=author%3ABenSchZA" title="Bug reports">🐛</a>
-    </td>
-  </tr>
-</table>
-
+<!-- contributors -->
 ---
 
 ## Support and Contact
